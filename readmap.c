@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 19:59:14 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/12 01:02:59 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/12 20:17:21 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,18 +116,18 @@ void	read_entry(t_placeholder *view, char *filename)
 			}
 			w++;
 		}
-		if(view->max_xwidth != 0 && ((view->max_xwidth < w) || (view->max_xwidth > w))) // we gucci?
+		if(view->max_xwidth != 0 && ((view->max_xwidth < w - 1) || (view->max_xwidth > w - 1))) // we gucci?
 		{
 			printf("tis the season to pass invalid files");
 			exit (0);
 		}
-		view->max_xwidth = w;
+		view->max_xwidth = w - 1; //
 		h++;
 		w = 0;
  		free(line); 
 		free(jeb); //yo this worked without freeing jeb wtf
  	} 
-	view->max_yheight = h;
+	view->max_yheight = h - 1; //
 	close (fd);
 	pre_points(view, filename);
 }
