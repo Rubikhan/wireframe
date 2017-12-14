@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 18:01:01 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/13 22:26:28 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/14 14:28:29 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,28 +83,33 @@ int draw_all_lines(t_placeholder *view)
 	int i = 0;
 	int j = 0;
 	int thisx = (winx - (xstep/2)*max_x);
-	int thisy = (winy - xstep*max_y);
+
 	int nexty;
 	int nextx;
 	int color = 0x007722;
-	int thisz;
+	int thisz = view->zs[j] * 20;
+	int thisy = (winy - xstep*max_y) - thisz;
 	int nextz;
-	thisz = view->zs[j];
+	int nexty2;
+	int anotherz = view->zs[0 + max_x];
 
 	while (view->xs[j])
 	{
 		while (i < max_x)
 		{
-			nextz = view->zs[j + 1] ; //
-			nexty = thisy - ystep - (nextz * 5);
+			if ((j + max_x) < max_x * max_y) // dont have this it freeeeeezes
+				anotherz = view->zs[j + max_x] * 20;
+
+			nextz = view->zs[j + 1] * 20 ; //
+			nexty = thisy - ystep - (nextz - thisz); // on to something
+			nexty2 = thisy - ystep - (anotherz - thisz); // on to something
 			nextx = thisx + xstep;
 
 			draw_line(thisx, nextx, thisy, nexty, view, color); 
-			draw_line(thisx, nextx, thisy, (nexty + 2*ystep), view, color);
+			draw_line(thisx, nextx, thisy, ((nexty2 + 2*ystep) /* - anotherz */), view, color);
 			color = color + 0x203040;
 
 			thisx = nextx;
-
 			thisy = nexty ;   // 
 			thisz = nextz; // 
 
@@ -112,7 +117,7 @@ int draw_all_lines(t_placeholder *view)
 			j++;
 		}
 		thisx = (winx -((xstep/2) *max_x) + j );
-		thisy = (winy -xstep*max_y + (j / 2)); //
+		thisy = (winy -xstep*max_y + (j / 2)); // //need to incorporate z somehow?
 		i = 0;
 		
 	}
