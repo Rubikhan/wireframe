@@ -6,12 +6,29 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:23:59 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/13 21:14:52 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/15 17:14:34 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
+
+int get_max_z(int *zarr)
+{
+	int i;
+	i = 1;
+	int store;
+	store = zarr[0]; 
+
+	while (zarr[i])
+	{
+		if (store < zarr[i])
+			store = zarr[i];
+		i++;
+	}
+
+	return (store);
+}
 
 int main(int argc, char *argv[])
 {
@@ -26,37 +43,58 @@ int main(int argc, char *argv[])
 
 	read_entry(first, argv[1]);
 
+	int max_x = first->max_xwidth;	
+	int max_y = first->max_yheight;
+	int max_z = get_max_z(first->zs);
+	
+//THIS IS JUST BAD SAM YOU KNOW IT
+
+	if (max_x > max_y)
+	{
+		first->win_y = (COEF * (max_x/max_y)) * first->max_yheight ;
+		first->win_x = COEF * first->max_xwidth;
+	}
+	else if (max_y > max_x)
+	{
+		first->win_y = COEF * first->max_yheight ;
+		first->win_x = (COEF * (max_y/max_x)) * first->max_xwidth;
+	}
+	else
+	{
+		first->win_y = COEF * first->max_yheight ;
+		first->win_x = COEF * first->max_xwidth;
+	}
+	int win_x = first->win_x;
+	int win_y = first->win_y;
+
+
 	first->hajimari = mlx_init();
-	first->win = mlx_new_window(first->hajimari, 600, 600, argv[1]);
+	first->win = mlx_new_window(first->hajimari, win_x  , win_y  , argv[1]);
 //	first->img = mlx_new_image(first->hajimari, 600, 600);
 
 	printf("width: %d height: %d\n", first->max_xwidth, first->max_yheight);
 
  	int x1 = 0; 
  	int x2 = 0;
-	int y1 = 600;
+	int y1 = first->win_y;
 	int y2 = 0;
 
- 	while (x2 <= 600) 
+ 	while (x2 <= first->win_x) 
  	{ 
 
  		draw_line(x1, x2, y1, y2, first, 0xCC2277); 
-		x2 = x2 + 20;
-		y1 = y1 - 20;
+		x2 = x2 + COEF;
+		y1 = y1 - COEF;
 
  	} 
 
 	draw_all_lines(first);
 
-	
-
-/* 	draw_line(a, z, first, 0xCC2277); */
-
-
-
+	printf("MAX Z: %d\n", max_z);
 
     mlx_key_hook (first->win, key_down_hook, first);
 	mlx_loop(first->hajimari);
+
 
 //	return(26);
 }
