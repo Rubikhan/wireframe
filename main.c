@@ -6,21 +6,21 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:23:59 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/16 17:40:34 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/16 19:39:16 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-int get_max_z(int *zarr)
+int get_max_z(int *zarr, int max_x, int max_y)
 {
 	int i;
 	i = 1;
 	int store;
 	store = zarr[0]; 
 
-	while (zarr[i])
+	while (i < max_x * max_y)
 	{
 		if (store < zarr[i])
 			store = zarr[i];
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 
 	int max_x = first->max_xwidth;	
 	int max_y = first->max_yheight;
-	int max_z = get_max_z(first->zs);
+	first->max_z = get_max_z(first->zs,  first->max_xwidth, first->max_yheight);
 	
 //THIS IS JUST BAD SAM YOU KNOW IT
 
@@ -78,7 +78,8 @@ int main(int argc, char *argv[])
 
 	draw_all_lines(first);
 
-	printf("MAX Z: %d\n", max_z);
+	printf("MAX Z: %d\n", first->max_z);
+	printf("HAY %d", 6 /10);
 
     mlx_key_hook (first->win, key_down_hook, first);
 	mlx_loop(first->hajimari);

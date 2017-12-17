@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:22:23 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/16 18:37:12 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/16 19:17:21 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_placeholder
 	char *fullbuf;
 	int		max_xwidth;
 	int		max_yheight;
+	int		max_z;
 	int *xs;
 	int *ys;
 	int *zs;

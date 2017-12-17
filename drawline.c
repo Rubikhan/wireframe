@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 18:01:01 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/16 18:33:48 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/16 20:00:35 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,20 +98,21 @@ int draw_all_lines(t_placeholder *view)
 	int j = 0;
 	int k = 0;
  	int color = 0x00CC77; 
-	int z0 = view->zs[j] * 10;
+
+
 	int z1;
 	int z2;
 
 //THIS IS JUST BAD BAD BAD BAD SAM
 
 	xstep = ((win_x - x0) / ((max_x + max_y))) * 3; 
-	ystep = ((win_y - y0) / (max_y )) * 3;
+	ystep = ((win_y - y0) / (max_y )) * 2;
 	xstep /= 4;
-	ystep /= 4;; 
+	ystep /= 4;
 	if (ystep == 0)
 		ystep = 1;
-	
-
+	int z0 = view->zs[j] * ystep * 2;	
+	printf("max_z: %d\n", view->max_z);
 
 //	ystep * max_y == lasty1 - firsty0
 
@@ -121,15 +122,17 @@ int draw_all_lines(t_placeholder *view)
 		while (i < max_x)
 		{
  			if ((j + max_x) < max_x * max_y) // dont have this it freeeeeezes 
-				z2 = view->zs[j + max_x] * 10;
+				z2 = view->zs[j + max_x] * ystep * 2;
+			else
+				z2 = 1;
 
-			z1 = view->zs[j + 1] * 10;
+			z1 = view->zs[j + 1] * ystep * 2;
 			x1 = x0 + xstep;
 			y1 = y0 - ystep - (z1 - z0);
 			y2 = y0 - ystep - (z2 - z0);
 
 			
-			printf("x0: %d | x1: %d | y0: %d | y1: %d\n", x0, x1, y0, y1);
+//			printf("x0: %d | x1: %d | y0: %d | y1: %d\n", x0, x1, y0, y1);
 			draw_line(x0, x1, y0, y1, view, color);  
 			draw_line(x0, x1, y0, y2 + ystep*2, view, color);  
 
