@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 18:01:01 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/15 17:20:51 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/16 17:33:52 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ int draw_all_lines(t_placeholder *view)
  	int max_y = view->max_yheight; 
 	int win_x = view->win_x;
 	int win_y = view->win_y;
-	int x0 = (win_x / 2) - (win_x/4);
-	int y0 = (win_y - (max_y * (COEF/3)));
+	int x0 = (win_x / 2) - (win_x/4); // 
+	int y0 = (win_y - (max_y * (COEF/3))); //
 	int xstep;
 	int ystep;
 
@@ -106,13 +106,13 @@ int draw_all_lines(t_placeholder *view)
 
 	if(max_x > max_y)
 	{
-		 xstep = ((win_x/3) / max_x);
-		 ystep =  (((win_y/4) / (max_x/max_y)) / max_y);
+		xstep = ((win_x/3) / max_x); 
+		ystep =  (((win_y/4) / (max_x/max_y)) / max_y); 
 	}
 	else if(max_y > max_x)
 	{
-		 ystep =  ((win_y/4) / max_y);
-		 xstep =  (((win_x/3) / (max_y/max_x)) / max_x);
+		ystep =  ((win_y/4) / max_y); 
+		xstep =  (((win_x/3) / (max_y/max_x)) / max_x); 
 	}
 	else
 	{

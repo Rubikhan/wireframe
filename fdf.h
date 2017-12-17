@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:22:23 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/15 17:41:10 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/16 17:34:19 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <math.h>
 #include <fcntl.h>
 
-#define COEF 10
+#define COEF 45
 
 typedef struct s_vector
 {
