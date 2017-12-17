@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 18:01:01 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/16 17:33:52 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/16 18:33:48 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int draw_all_lines(t_placeholder *view)
 	int win_x = view->win_x;
 	int win_y = view->win_y;
 	int x0 = (win_x / 2) - (win_x/4); // 
-	int y0 = (win_y - (max_y * (COEF/3))); //
+	int y0 = (win_y / 2 ) + (win_y / 4); //
 	int xstep;
 	int ystep;
 
@@ -98,36 +98,32 @@ int draw_all_lines(t_placeholder *view)
 	int j = 0;
 	int k = 0;
  	int color = 0x00CC77; 
-	int z0 = view->zs[j] * 7;
+	int z0 = view->zs[j] * 10;
 	int z1;
 	int z2;
 
 //THIS IS JUST BAD BAD BAD BAD SAM
 
-	if(max_x > max_y)
-	{
-		xstep = ((win_x/3) / max_x); 
-		ystep =  (((win_y/4) / (max_x/max_y)) / max_y); 
-	}
-	else if(max_y > max_x)
-	{
-		ystep =  ((win_y/4) / max_y); 
-		xstep =  (((win_x/3) / (max_y/max_x)) / max_x); 
-	}
-	else
-	{
-		 xstep = ((win_x/3) / max_x);
-		 ystep =  ((win_y/4) / max_y);
-	}
+	xstep = ((win_x - x0) / ((max_x + max_y))) * 3; 
+	ystep = ((win_y - y0) / (max_y )) * 3;
+	xstep /= 4;
+	ystep /= 4;; 
+	if (ystep == 0)
+		ystep = 1;
+	
+
+
+//	ystep * max_y == lasty1 - firsty0
+
 
 	while (view->xs[j])
 	{
 		while (i < max_x)
 		{
  			if ((j + max_x) < max_x * max_y) // dont have this it freeeeeezes 
-				z2 = view->zs[j + max_x] * 7;
+				z2 = view->zs[j + max_x] * 10;
 
-			z1 = view->zs[j + 1] * 7;
+			z1 = view->zs[j + 1] * 10;
 			x1 = x0 + xstep;
 			y1 = y0 - ystep - (z1 - z0);
 			y2 = y0 - ystep - (z2 - z0);
@@ -149,7 +145,7 @@ int draw_all_lines(t_placeholder *view)
 //		printf("\n- k: %d -", k);
 		x0 = (win_x / 2) - (win_x/4) + xstep * k;
 //		printf("\n x0: %d", x0);
-		y0 = (win_y - (max_y * (COEF/3))) + ystep * k; //why is this plus ystep * k? WHY
+		y0 = (win_y / 2) + (win_y/4) + ystep * k; //why is this plus ystep * k? WHY
 //		printf("\n y0: %d", y0);
 		i = 0;
 	}

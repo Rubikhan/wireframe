@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:23:59 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/15 17:14:34 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/16 17:40:34 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,9 @@ int main(int argc, char *argv[])
 	
 //THIS IS JUST BAD SAM YOU KNOW IT
 
-	if (max_x > max_y)
-	{
-		first->win_y = (COEF * (max_x/max_y)) * first->max_yheight ;
-		first->win_x = COEF * first->max_xwidth;
-	}
-	else if (max_y > max_x)
-	{
-		first->win_y = COEF * first->max_yheight ;
-		first->win_x = (COEF * (max_y/max_x)) * first->max_xwidth;
-	}
-	else
-	{
-		first->win_y = COEF * first->max_yheight ;
-		first->win_x = COEF * first->max_xwidth;
-	}
+	first->win_y = 900;
+	first->win_x = 1600;
+
 	int win_x = first->win_x;
 	int win_y = first->win_y;
 
