@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:22:23 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 22:59:53 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/17 23:56:01 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 
 # include "mlx.h"
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
@@ -77,11 +77,11 @@ typedef	struct		s_placeholder
 }					t_placeholder;
 
 int					key_down_hook(int kcode, t_placeholder *view);
-int					draw_line(t_daw *daw, int y2, t_placeholder *view, int cr);
+int					draw_line(t_daw *daw, int y2, t_placeholder *view);
 void				read_entry(t_placeholder *view, char *filename);
 int					draw_all_lines(t_placeholder *view);
 void				error_handling(int ecode);
-t_dl				*dl_helper1(t_daw *daw, t_placeholder *view, int y2);
+t_dl				*dl_helper1(t_daw *daw, int y2);
 void				dl_helper2(t_dl *a);
 void				dl_helper3(t_dl *a);
 void				dl_helper4(t_dl *a);

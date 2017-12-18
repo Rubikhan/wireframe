@@ -6,11 +6,11 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 19:59:14 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 22:22:57 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/17 23:25:31 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	get_line_points(t_placeholder *view, char **str, int callcount)
 {

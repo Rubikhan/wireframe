@@ -6,20 +6,23 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:17:41 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 22:18:39 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/18 00:17:36 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 int		key_down_hook(int kcode, t_placeholder *view)
 {
+	void *a;
+
+	a = view;
 	if (kcode == 53)
 		exit(0);
 	return (0);
 }
 
-t_dl	*dl_helper1(t_daw *daw, t_placeholder *view, int y2)
+t_dl	*dl_helper1(t_daw *daw, int y2)
 {
 	t_dl *a;
 

@@ -6,18 +6,17 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 18:01:01 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 22:59:04 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/17 23:55:43 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <stdio.h>
+#include "../includes/fdf.h"
 
-int		draw_line(t_daw *daw, int y2, t_placeholder *view, int cr)
+int		draw_line(t_daw *daw, int y2, t_placeholder *view)
 {
 	t_dl *a;
 
-	a = dl_helper1(daw, view, y2);
+	a = dl_helper1(daw, y2);
 	if (abs(a->xstart - a->xfin) < abs(a->ystart - a->yfin))
 		dl_helper2(a);
 	if (a->xstart > a->xfin)
@@ -93,8 +92,8 @@ int		draw_all_lines(t_placeholder *view)
 			a->x1 = a->x0 + a->xstep;
 			a->y1 = a->y0 - a->ystep - (a->z1 - a->z0);
 			a->y2 = a->y0 + a->ystep - (a->z2 - a->z0);
-			draw_line(a, a->y1, view, a->cr);
-			draw_line(a, a->y2, view, a->cr);
+			draw_line(a, a->y1, view);
+			draw_line(a, a->y2, view);
 			daw_loop_helper(a);
 		}
 		a->k++;

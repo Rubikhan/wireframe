@@ -6,11 +6,11 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:23:59 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 22:24:01 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/17 23:24:59 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	error_handling(int ecode)
 {

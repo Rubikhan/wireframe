@@ -18,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
 		gcc -Wall -Werror -Wextra -c -I libft.h $(SRC)
 		ar rcs $(NAME) $(OBJ)
 clean:
