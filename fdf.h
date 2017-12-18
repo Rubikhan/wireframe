@@ -6,19 +6,39 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:22:23 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 17:25:01 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/17 22:59:53 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "libft/libft.h"
-#include <stdlib.h>
-#include <math.h>
-#include <fcntl.h>
+#ifndef FDF_H
+# define FDF_H
 
-#define COEF 4
+# include "mlx.h"
+# include "libft/libft.h"
+# include <stdlib.h>
+# include <math.h>
+# include <fcntl.h>
 
-typedef	struct	s_daw
+typedef	struct		s_dl
+{
+	int steepbool;
+	int xstart;
+	int ystart;
+	int xfin;
+	int yfin;
+	int tempstart;
+	int tempfin;
+	int tempx;
+	int tempy;
+	int dx;
+	int dy;
+	int derror;
+	int error;
+	int jy;
+	int jx;
+}					t_dl;
+
+typedef	struct		s_daw
 {
 	int max_x;
 	int max_y;
@@ -37,27 +57,33 @@ typedef	struct	s_daw
 	int i;
 	int j;
 	int k;
-	int color;
-}				t_daw;
+	int cr;
+}					t_daw;
 
-typedef struct s_placeholder
+typedef	struct		s_placeholder
 {
-	void *win;
-	void *hajimari;
-	char *fullbuf;
-	int		max_xwidth;
+	void	*win;
+	void	*hajimari;
+	char	*fullbuf;
+	int		mxw;
 	int		max_yheight;
 	int		max_z;
-	int *xs;
-	int *ys;
-	int *zs;
-	int win_y;
-	int win_x;
+	int		*xs;
+	int		*ys;
+	int		*zs;
+	int		win_y;
+	int		win_x;
 
-}			t_placeholder ; 
+}					t_placeholder;
 
-int     key_down_hook(int kcode, t_placeholder *view);
-int		draw_line(int x1, int x2, int y1, int y2, t_placeholder *view, int color);
-void	read_entry(t_placeholder *view, char *filename);
-int		draw_all_lines(t_placeholder *view);
-void	error_handling(int ecode);
+int					key_down_hook(int kcode, t_placeholder *view);
+int					draw_line(t_daw *daw, int y2, t_placeholder *view, int cr);
+void				read_entry(t_placeholder *view, char *filename);
+int					draw_all_lines(t_placeholder *view);
+void				error_handling(int ecode);
+t_dl				*dl_helper1(t_daw *daw, t_placeholder *view, int y2);
+void				dl_helper2(t_dl *a);
+void				dl_helper3(t_dl *a);
+void				dl_helper4(t_dl *a);
+
+#endif

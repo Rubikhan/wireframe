@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:23:59 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 16:10:49 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/17 22:24:01 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		main(int argc, char *argv[])
 		error_handling(0);
 	first = malloc(sizeof(t_placeholder));
 	first->max_yheight = 0;
-	first->max_xwidth = 0;
+	first->mxw = 0;
 	read_entry(first, argv[1]);
 	first->win_y = 1300;
 	first->win_x = 1600;

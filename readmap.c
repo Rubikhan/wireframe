@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 19:59:14 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 16:30:14 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/17 22:22:57 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	get_line_points(t_placeholder *view, char **str, int callcount)
 	int k;
 
 	k = 0;
-	i = callcount * view->max_xwidth;
-	j = i - view->max_xwidth;
+	i = callcount * view->mxw;
+	j = i - view->mxw;
 	while (j < i)
 	{
-		view->xs[j + view->max_xwidth] = k + 1;
-		view->ys[j + view->max_xwidth] = callcount + 1;
-		view->zs[j + view->max_xwidth] = ft_atoi(str[k++]);
+		view->xs[j + view->mxw] = k + 1;
+		view->ys[j + view->mxw] = callcount + 1;
+		view->zs[j + view->mxw] = ft_atoi(str[k++]);
 		j++;
 	}
 }
@@ -39,7 +39,7 @@ void	get_points(t_placeholder *view, char *filename)
 	char	**str;
 
 	i = 0;
-	w = view->max_xwidth;
+	w = view->mxw;
 	fd = open(filename, O_RDONLY);
 	while (i < view->max_yheight)
 	{
@@ -58,7 +58,7 @@ void	pre_points(t_placeholder *view, char *filename)
 	int mw;
 
 	mh = view->max_yheight;
-	mw = view->max_xwidth;
+	mw = view->mxw;
 	view->xs = ft_memalloc(sizeof(int) * ((mh * mw) + 1));
 	view->ys = ft_memalloc(sizeof(int) * ((mh * mw) + 1));
 	view->zs = ft_memalloc(sizeof(int) * ((mh * mw) + 1));
@@ -99,9 +99,9 @@ void	read_entry(t_placeholder *view, char *filename)
 		jeb = ft_strsplit(line, ' ');
 		while (jeb[w])
 			check_isdigit(jeb[w++]);
-		if (view->max_xwidth != 0 && ((view->max_xwidth < w - 1) || (view->max_xwidth > w - 1)))
+		if (view->mxw != 0 && ((view->mxw < w - 1) || (view->mxw > w - 1)))
 			error_handling(1);
-		view->max_xwidth = w - 1;
+		view->mxw = w - 1;
 		h++;
 		free(line);
 		free(jeb);
