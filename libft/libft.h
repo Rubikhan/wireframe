@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:04:23 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/11 16:36:40 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/17 15:16:08 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string.h>
 # include <unistd.h>
 
-# define BUFF_SIZE 2048
+# define BUFF_SIZE 10000
 
 typedef	struct		s_list
 {
