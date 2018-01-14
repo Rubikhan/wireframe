@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/10 19:59:14 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 23:25:31 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/18 12:31:54 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void	pre_points(t_placeholder *view, char *filename)
 
 	mh = view->max_yheight;
 	mw = view->mxw;
+	if (mw < 1)
+		error_handling(1);
+	if (mh == 0)
+		just_open_win(view, filename);
 	view->xs = ft_memalloc(sizeof(int) * ((mh * mw) + 1));
 	view->ys = ft_memalloc(sizeof(int) * ((mh * mw) + 1));
 	view->zs = ft_memalloc(sizeof(int) * ((mh * mw) + 1));

@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:17:41 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/18 00:17:36 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/18 10:22:26 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	dl_helper4(t_dl *a)
 {
 	a->dx = a->xfin - a->xstart;
 	a->dy = a->yfin - a->ystart;
-	a->derror = abs(a->dy) * 2;
+	a->derror = ft_abs(a->dy) * 2;
 	a->error = 0;
 	a->jy = a->ystart;
 	a->jx = a->xstart;

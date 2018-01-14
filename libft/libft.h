@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 16:04:23 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 15:16:08 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/18 10:20:47 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					ft_abs(int num);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 int					ft_delimitcount(char *str, int a);

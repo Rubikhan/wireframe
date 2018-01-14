@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:53:35 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/10 20:12:32 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/18 10:06:21 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,3 @@ int	get_next_line(const int fd, char **line)
 	rv = chrnl(&fda[fd], line);
 	return (rv);
 }
-
-
-

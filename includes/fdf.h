@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:22:23 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 23:56:01 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/18 11:13:14 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ t_dl				*dl_helper1(t_daw *daw, int y2);
 void				dl_helper2(t_dl *a);
 void				dl_helper3(t_dl *a);
 void				dl_helper4(t_dl *a);
+void				just_open_win(t_placeholder *first, char *filename);
 
 #endif

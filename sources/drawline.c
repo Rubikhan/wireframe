@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 18:01:01 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 23:55:43 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/18 11:29:22 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		draw_line(t_daw *daw, int y2, t_placeholder *view)
 	t_dl *a;
 
 	a = dl_helper1(daw, y2);
-	if (abs(a->xstart - a->xfin) < abs(a->ystart - a->yfin))
+	if (ft_abs(a->xstart - a->xfin) < ft_abs(a->ystart - a->yfin))
 		dl_helper2(a);
 	if (a->xstart > a->xfin)
 		dl_helper3(a);
@@ -84,11 +84,11 @@ int		draw_all_lines(t_placeholder *view)
 	{
 		while (a->i < a->max_x)
 		{
+			a->z1 = view->zs[a->j + 1] * (a->ystep / 2) * 3;
 			if ((a->j + a->max_x) < a->max_x * a->max_y)
 				a->z2 = view->zs[a->j + a->max_x] * (a->ystep / 2) * 3;
 			else
 				a->z2 = a->z1;
-			a->z1 = view->zs[a->j + 1] * (a->ystep / 2) * 3;
 			a->x1 = a->x0 + a->xstep;
 			a->y1 = a->y0 - a->ystep - (a->z1 - a->z0);
 			a->y2 = a->y0 + a->ystep - (a->z2 - a->z0);

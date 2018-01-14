@@ -6,7 +6,7 @@
 /*   By: smaddux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:23:59 by smaddux           #+#    #+#             */
-/*   Updated: 2017/12/17 23:24:59 by smaddux          ###   ########.fr       */
+/*   Updated: 2017/12/18 12:31:36 by smaddux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,21 @@ void	error_handling(int ecode)
 		ft_putstr("invalid ecode passed O_O\n");
 		exit(-1);
 	}
+}
+
+void	just_open_win(t_placeholder *first, char *filename)
+{
+	int	win_y;
+	int win_x;
+
+	first->win_y = 1300;
+	first->win_x = 1600;
+	win_y = first->win_y;
+	win_x = first->win_x;
+	first->hajimari = mlx_init();
+	first->win = mlx_new_window(first->hajimari, win_x, win_y, filename);
+	mlx_key_hook(first->win, key_down_hook, first);
+	mlx_loop(first->hajimari);
 }
 
 int		main(int argc, char *argv[])
